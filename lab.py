@@ -1,4 +1,3 @@
-#hey
 from pathlib import Path
 import numpy
 from matplotlib import pyplot
@@ -19,6 +18,7 @@ def plot_data(m, fname):
     Supersimple plotting code
     '''
     pyplot.plot(m[:,0], m[:,1])
+    pyplot.show()
     pyplot.savefig(fname, format='svg')
 
 if __name__ == '__main__':
