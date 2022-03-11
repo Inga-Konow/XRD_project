@@ -13,15 +13,21 @@ def load_data():
     set2 = DATA / 'set2.txt'
     return numpy.loadtxt(set1), numpy.loadtxt(set2)
 
-def plot_data(m, fname):
+def plot_data(m, fname, title):
     '''
     Supersimple plotting code
     '''
-    pyplot.plot(m[:,0], m[:,1])
-    pyplot.show()
-    pyplot.savefig(fname, format='svg')
+    fig = pyplot.figure()
+    ax = fig.add_subplot(111)
+    ax.set_title(title)
+    ax.set_xlabel(r'$2\theta$')
+    ax.set_ylabel('Intensity')
+    ax.grid()
+    ax.plot(m[:,0], m[:,1])
+    fig.show()
+    fig.savefig(fname, format='svg')
 
 if __name__ == '__main__':
     set1, set2 = load_data()
-    plot_data(set1, IMG / 'set1')
-    plot_data(set2, IMG / 'set2')
+    plot_data(set1, IMG / 'set1.svg', 'Crystaline Si')
+    plot_data(set2, IMG / 'set2.svg', 'Unknown sample')
